@@ -6,10 +6,13 @@ namespace CaesarCipher
   {
     static void Main(string[] args)
     {
+      Console.WriteLine(JakuszCipher("google"));
+    }
+    
+    public static string JakuszCipher(string str) 
+      {
+
       char[] alphabet = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-      
-      Console.WriteLine("What message would you like to encrypt?");
-      string str = Console.ReadLine(); 
 
       string ReturnedString = RemoveSpecialChars(str);
   
@@ -32,8 +35,7 @@ namespace CaesarCipher
         encryptedMessage[i] = alphEncryptedLetter;
       }
       string encryptedMessageString = String.Join("",encryptedMessage);
-      Console.WriteLine($"Your encoded message is \"{encryptedMessageString}\" ");
-
+      return encryptedMessageString;
     }    
     
     public static string RemoveSpecialChars(string str)
