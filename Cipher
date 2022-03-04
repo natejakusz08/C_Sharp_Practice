@@ -6,10 +6,12 @@ namespace CaesarCipher
   {
     static void Main(string[] args)
     {
-      Console.WriteLine(JakuszCipher("google"));
+      Console.WriteLine(CipherEncrypt("google"));
+      Console.WriteLine(CipherDecrypt("google"));
+
     }
     
-    public static string JakuszCipher(string str) 
+    public static string CipherEncrypt(string str) 
       {
 
       char[] alphabet = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
@@ -37,7 +39,37 @@ namespace CaesarCipher
       string encryptedMessageString = String.Join("",encryptedMessage);
       return encryptedMessageString;
     }    
-    
+    public static string CipherDecrypt(string str) 
+      {
+      //alphabet
+      char[] alphabet = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+      //removes special characters from string
+      string ReturnedString = RemoveSpecialChars(str);
+      //puts entire message into lowercase
+      string EncryMessLower = ReturnedString.ToLower();
+      //makes an array out of string
+      char[] secretMessage = EncryMessLower.ToCharArray();
+      //makes empty array
+      char[] decryptedMessage = new char[secretMessage.Length];
+      
+      for (int i = 0; i < secretMessage.Length; i++)
+      {
+        //takes the letter from secret message and stores it in the letter variable
+        char letter = secretMessage[i];
+        //finds its position in the alphabet array
+        int alphLocation = Array.IndexOf(alphabet, letter);
+        //should add three to the location changing the letter in the future. Modulo helps wrap around alphabet and prevents errors in letters at the end of the alphabet
+        int alphMinusThree = (alphLocation - 3) % alphabet.Length;
+        //identifies new letter position based on letter - 3
+        char alphDecryptedLetter = alphabet[alphMinusThree];
+        //adds the encrypted letter in the newly created empty array with i being the position to put the letter in 
+        decryptedMessage[i] = alphDecryptedLetter;
+      }
+      //creates string fromn array
+      string decryptedMessageString = String.Join("",decryptedMessage);
+      //returns message to wherever it was called
+      return decryptedMessageString;
+      }
     public static string RemoveSpecialChars(string str)
         {
             // Create  a string array and add the special characters you want to remove
