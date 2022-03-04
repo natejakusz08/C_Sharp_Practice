@@ -1,0 +1,54 @@
+using System;
+
+namespace CaesarCipher
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      char[] alphabet = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+      
+      Console.WriteLine("What message would you like to encrypt?");
+      string str = Console.ReadLine(); 
+
+      string ReturnedString = RemoveSpecialChars(str);
+  
+      string plainTextMessLower = ReturnedString.ToLower();
+      char[] secretMessage = plainTextMessLower.ToCharArray();
+     
+      char[] encryptedMessage = new char[secretMessage.Length];
+      
+      for (int i = 0; i < secretMessage.Length; i++)
+      {
+        //takes the letter from secret message and stores it in the letter variable
+        char letter = secretMessage[i];
+        //finds its position in the alphabet array
+        int alphLocation = Array.IndexOf(alphabet, letter);
+        //should add three to the location changing the letter in the future. Modulo helps wrap around alphabet and prevents errors in letters at the end of the alphabet
+        int alphPlusThree = (alphLocation + 3) % alphabet.Length;
+        //identifies new letter position based on letter + 3
+        char alphEncryptedLetter = alphabet[alphPlusThree];
+        //adds the encrypted letter in the newly created empty array with i being the position to put the letter in 
+        encryptedMessage[i] = alphEncryptedLetter;
+      }
+      string encryptedMessageString = String.Join("",encryptedMessage);
+      Console.WriteLine($"Your encoded message is \"{encryptedMessageString}\" ");
+
+    }    
+    
+    public static string RemoveSpecialChars(string str)
+        {
+            // Create  a string array and add the special characters you want to remove
+            string[] chars = new string[] { ",", ".", "/", "!", "@", "#", "$", "%", "^", "&", "*", "'", "\"", ";", "_", "(", ")", ":", "|", "[", "]" };
+            //Iterate the number of times based on the String array length.
+            for (int i = 0; i < chars.Length; i++)
+            {
+                if (str.Contains(chars[i]))
+                {
+                    str = str.Replace(chars[i], "");
+                }
+            }
+            return str;
+        }
+  }
+}
