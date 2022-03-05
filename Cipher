@@ -6,9 +6,25 @@ namespace CaesarCipher
   {
     static void Main(string[] args)
     {
-      Console.WriteLine(CipherEncrypt("google"));
-      Console.WriteLine(CipherDecrypt("google"));
-
+      Console.WriteLine("Do you want to encrypt or decrypt a message?");
+      string decision = Console.ReadLine();
+      string finalDecision = decision.ToLower();
+      
+      switch (finalDecision)
+      {
+        case "encrypt":
+        Console.WriteLine("Type what you want to encrypt.");
+        string str = Console.ReadLine();
+        Console.WriteLine(CipherEncrypt(str));
+        break;
+        case "decrypt":
+        Console.WriteLine("Type what you want to decrypt.");
+        string strTwo = Console.ReadLine();
+        Console.WriteLine(CipherDecrypt(strTwo));
+        break;
+        default:
+        break;
+      }
     }
     
     public static string CipherEncrypt(string str) 
@@ -39,12 +55,12 @@ namespace CaesarCipher
       string encryptedMessageString = String.Join("",encryptedMessage);
       return encryptedMessageString;
     }    
-    public static string CipherDecrypt(string str) 
+    public static string CipherDecrypt(string strTwo) 
       {
       //alphabet
       char[] alphabet = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
       //removes special characters from string
-      string ReturnedString = RemoveSpecialChars(str);
+      string ReturnedString = RemoveSpecialChars(strTwo);
       //puts entire message into lowercase
       string EncryMessLower = ReturnedString.ToLower();
       //makes an array out of string
