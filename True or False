@@ -1,0 +1,33 @@
+using System;
+
+namespace TrueOrFalse
+{
+  class Program
+  {
+		static void Main(string[] args)
+    {
+      // Do not edit these lines
+      Console.WriteLine("Welcome to 'True or False?'\nPress Enter to begin:");
+      string entry = Console.ReadLine();
+      Tools.SetUpInputStream(entry);
+
+      // Type your code below
+      string[] questions = 
+      {
+        "Die Hard a Christmas movie.", 
+        "Sally sells sea shells down by the sea shore.", 
+        "Camels have three sets of eyelashes.", 
+        "During the Apollo 17 mission, Harrison Schmitt suffered from a severe allergic reaction to the dust found on the surface of the moon."};
+      bool[] answers = {true, true, true, true};
+      bool[] responses = new bool[questions.Length];
+      if (questions.Length != answers.Length)
+      {
+        Console.WriteLine("Questions do not equal answers!");
+      }
+
+
+
+
+    }
+  }
+}
