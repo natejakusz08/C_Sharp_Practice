@@ -9,7 +9,7 @@ namespace CaesarCipher
       Console.WriteLine("Do you want to encrypt or decrypt a message?");
       string decision = Console.ReadLine();
       string finalDecision = decision.ToLower();
-      
+      //Just wanted to practice switch statements over if/else/elseif
       switch (finalDecision)
       {
         case "encrypt":
