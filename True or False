@@ -6,11 +6,12 @@ namespace TrueOrFalse
   {
 		static void Main(string[] args)
     {
-
+      // Do not edit these lines
       Console.WriteLine("Welcome to 'True or False?'\nPress Enter to begin:");
       string entry = Console.ReadLine();
       Tools.SetUpInputStream(entry);
 
+      // Type your code below
       string[] questions = 
       {
         "Die Hard a Christmas movie.", 
@@ -23,10 +24,28 @@ namespace TrueOrFalse
       {
         Console.WriteLine("Questions do not equal answers!");
       }
-
-
-
-
+      int askingIndex = 0;
+      foreach (string question in questions)
+      {
+        string input;
+        bool isBool;
+        bool inputBool;
+        Console.WriteLine($"{question}\nTrue or False?");
+        input = Console.ReadLine();
+        isBool = Boolean.TryParse(input, out inputBool); 
+        while (isBool != true)
+        {
+          Console.WriteLine("Please respond with 'true' or 'false'.");
+          input = Console.ReadLine();
+          isBool = Boolean.TryParse(input, out inputBool);
+        }
+        responses[askingIndex] = inputBool;
+        askingIndex++;
+      }
+      foreach (bool response in responses)
+      {
+        Console.WriteLine(response);
+      }
     }
   }
 }
