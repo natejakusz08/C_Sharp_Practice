@@ -42,10 +42,24 @@ namespace TrueOrFalse
         responses[askingIndex] = inputBool;
         askingIndex++;
       }
+      //foreach (bool response in responses)
+      //{
+      //  Console.WriteLine(response);
+      //}
+      int scoringIndex = 0;
+      int score = 0;
       foreach (bool response in responses)
       {
-        Console.WriteLine(response);
+        bool answer = answers[scoringIndex];
+        int scoringIndexQues = scoringIndex + 1;
+        Console.WriteLine($"{scoringIndexQues}. Input: {response} | Answer: {answer}");
+        if (response == answer)
+        {
+          score++;
+        }
+        scoringIndex++;
       }
+      Console.WriteLine($"You got {score} out of {questions.Length} correct!");
     }
   }
 }
