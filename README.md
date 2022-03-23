@@ -1,7 +1,7 @@
 # C# Practice
 
 ### Description:
-None of these projects have an intended purpose besides to learn a specific capability or syntax of C#. 
+None of these projects have an intended purpose besides to learn a specific capability and/or syntax of C#. 
 
 #### For Example:
 * Money Maker = Data types and variables
